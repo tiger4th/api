@@ -2,14 +2,14 @@
 require_once __DIR__ . '/config.php';
 
 // リクエストメソッドを確認
-if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+if (!in_array($_SERVER['REQUEST_METHOD'], ['GET', 'POST'], true)) {
     http_response_code(405);
-    echo json_encode(['error' => 'Method Not Allowed. Use GET method.']);
+    echo json_encode(['error' => 'Method Not Allowed. Use POST or GET.']);
     exit();
 }
 
-// GETパラメータを取得
-$content = $_GET['content'] ?? '';
+// パラメータを取得（POST優先、なければGET）
+$content = $_POST['content'] ?? $_GET['content'] ?? '';
 
 // パラメータの検証
 if (empty(trim($content))) {
