@@ -1,6 +1,6 @@
 <?php
 // 環境設定ファイルを読み込み
-require_once __DIR__ . './env.php';
+require_once __DIR__ . '/env.php';
 
 // API設定
 define('GEMINI_API_URL', 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent');
