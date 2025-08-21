@@ -128,7 +128,7 @@ $prompt = <<<EOD
   - 職業の紹介や派遣、斡旋にあたる行為
 ---
 
-上記の禁止事項に該当するかどうかを確認し、以下の形式で回答してください。
+上記の禁止事項に該当するかどうかを確認し、以下の形式で合計500字以内で回答してください。
 回答にはmarkdownを使用しないでください。
 
 【判定結果】
@@ -154,11 +154,14 @@ function callGeminiAPI($prompt) {
             ]
         ],
         'generationConfig' => [
-            'temperature' => 0.9,
-            'topK' => 1,
-            'topP' => 1,
+            'temperature' => 0.2,
+            // 'topK' => 1,
+            // 'topP' => 1,
             'maxOutputTokens' => 2048,
-            'stopSequences' => []
+            'stopSequences' => [],
+            // 'thinkingConfig' => [
+            //     'thinkingBudget' => 128
+            // ]
         ],
         'safetySettings' => [
             [
